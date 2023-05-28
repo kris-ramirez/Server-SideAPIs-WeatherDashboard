@@ -3,3 +3,9 @@ h1 {
     background-color: #011f4b;
     color: #b3cde0;
 }
+
+#city {
+    border-color: #011f4b;
+    border-style: solid;
+    padding-left: 10px;
+}
