@@ -31,12 +31,60 @@ function handleSearchFormSubmit(event) {
             // Process the retrieved weather data
             console.log(data);
             getParams(data);
+            displayForecast(data);
             // Display or use the weather data as needed
         })
         .catch(function (error) {
             console.error('Error:', error.message);
         });
 }
+
+//five day forecast
+function displayForecast(weatherData) {
+    var forecastData = [];
+    for (var i = 8; i <= 40; i += 8) {
+        forecastData.push(weatherData.list[i]);
+    }
+
+    var forecastContainer = document.getElementById('forecastContainer');
+
+    for (var j = 0; j < forecastData.length; j++) {
+        var dayData = forecastData[j];
+
+        var forecastDate = dayData.dt_txt;
+        var [apiDate, apiTime] = forecastDate.split(" ");
+        var [year, month, day] = apiDate.split('-');
+        var formattedDate2 = "(" + month + "/" + day + "/" + year + ")";
+
+        var date2 = formattedDate2;
+        var temperature2 = dayData.main.temp;
+        var humidity2 = dayData.main.humidity;
+        var wind2 = dayData.wind.speed;
+
+        var card = document.createElement('div');
+        card.classList.add('card');
+
+        var date2El = document.createElement('h4');
+        date2El.textContent = date2;
+
+        var temperature2El = document.createElement('p');
+        temperature2El.textContent = 'Temperature: ' + temperature2 + 'F';
+
+        var humidity2El = document.createElement('p');
+        humidity2El.textContent = 'Humidity: ' + humidity2 + '%';
+
+        var wind2El = document.createElement('p');
+        wind2El.textContent = 'Wind: ' + wind2 + 'MPH';
+
+        card.appendChild(date2El);
+        card.appendChild(temperature2El);
+        card.appendChild(humidity2El);
+        card.appendChild(wind2El);
+
+        forecastContainer.appendChild(card);
+    }
+}
+
 function getParams(weatherData) {
     //Display city, date, & icon
     var cityName = weatherData.city.name;
@@ -64,4 +112,12 @@ function getParams(weatherData) {
     windEl.textContent = 'Wind: ' + wind + " MPH";
 
 }
+
+
+
+//displays the most recent search on the page
+var searches = localStorage.getItem('search-input');
+var searchesEl = document.getElementById('searches');
+searchesEl.textContent = searches;
+
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);

@@ -25,9 +25,11 @@
         <!--Bootstrap for form DATALIST-->
 
         <form id="search-form" class="form w-100">
-          <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
+          <input id="search-input" class="form-input w-100" type="text" placeholder="Search">
           <button class="btn btn-info btn-block">Search</button>
         </form>
+        <button id="searches" type="button" class="btn btn-secondary">Recent Search</button>
+       
       </div>
     
       <div class="col-12  col-md-8 col-lg-9">
@@ -39,31 +41,14 @@
           <h5 id="humid">Humidity: </h5>
         </section>
 
-        <div class="row">
-          <div class="col-12 col-sm-6 col-lg-2 mb-3">
-            <p>
-              Monday
-            </p>
+        <div class ="card">
+          <div class="card-header">
+          <h3>5-Day Forecast </h3>
           </div>
-          <div class="col-12 col-sm-6 col-lg-2 mb-3">
-            <p>
-              Tuesday
-            </p>
+          <div id="forecastContainer" class="card-body">
+            <!--Forecast cards will appear here-->
           </div>
-          <div class="col-12 col-sm-6 col-lg-2 mb-3">
-            <p>
-              Wednesday
-            </p>
-          </div>
-          <div class="col-12 col-sm-6 col-lg-2 mb-3">
-            <p>
-              Thursday
-            </p>
-          </div>
-          <div class="col-12 col-sm-6 col-lg-2 mb-3">
-            <p>
-              Friday
-            </p>
+        
           </div>
         </div>
       </div>
